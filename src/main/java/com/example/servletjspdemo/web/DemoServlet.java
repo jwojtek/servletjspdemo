@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/Demo")
 public class DemoServlet extends HttpServlet {
+	public static int licznik = 0;
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request,
@@ -23,17 +24,30 @@ public class DemoServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		ServletContext ctx = request.getServletContext();
-		int licznik=0;
+		
+		
+		  {
+		        response.setContentType("text/html");
+		        PrintWriter wynik = response.getWriter();
+
+		        
+		        licznik ++;
+		       wynik.println("Wejsc na strone "+licznik+"<br>");
+		     
+		    }
+		
+	
+		
 		
 		if(param!=null&&param!="")		
 		{
 			    ctx.setAttribute("name", param);
 				session.setAttribute("name", param);
-				licznik++;
+				
 		
 				
 		}
-				out.println("<h1>Wejsc na strone "+licznik+" </h1>");
+				
 				out.println("<h1>Hello from context "+ctx.getAttribute("name")+" </h1>");
 				out.println("<h1>Hello from session "+session.getAttribute("name")+" </h1>");
 				out.println("<h1>Hello from request "+param+" </h1>");
