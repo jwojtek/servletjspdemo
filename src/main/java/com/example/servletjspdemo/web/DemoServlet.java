@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+
 @WebServlet("/Demo")
 public class DemoServlet extends HttpServlet {
 	public static int licznik = 0;
@@ -25,14 +27,15 @@ public class DemoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ServletContext ctx = request.getServletContext();
 		
+
 		
 		  {
-		        response.setContentType("text/html");
+		        response.setContentType("text/html; charset=UTF-8");
 		        PrintWriter wynik = response.getWriter();
 
 		        
 		        licznik ++;
-		       wynik.println("Wejsc na strone "+licznik+"<br>");
+		       wynik.println("Hit count "+licznik+"<br>" );
 		     
 		    }
 		
